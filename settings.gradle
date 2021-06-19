@@ -1,2 +1,7 @@
 include ':app'
+include ':libraries:data'
+include ':libraries:coremodels'
+include ':features:noteslist'
+include ':features:noteseditor'
+
 rootProject.name = "NoteApp"
