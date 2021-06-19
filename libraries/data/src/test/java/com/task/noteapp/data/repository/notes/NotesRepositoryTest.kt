@@ -1,8 +1,9 @@
 package com.task.noteapp.data.repository.notes
 
 import com.google.common.truth.Truth.assertThat
+import com.task.noteapp.data.repository.notes.mappers.noteEntityToNote
+import com.task.noteapp.data.repository.notes.mappers.noteToNoteEntity
 import com.task.notes.cache.dao.NotesDao
-import com.task.notes.cache.models.NoteEntity
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
