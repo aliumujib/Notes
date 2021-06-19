@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo "Running lint check..."
+
+./gradlew spotlessCheck --daemon
+status=$?
+
+if [ $status -ne 0 ]; then
+  exec < /dev/tty
+  echo "Lint checks failed"
+    while read -p "Should I run spotlessApply? (Y/n) " yn; do
+          case $yn in
+        [Yy] ) echo "Running spotlessApply" && ./gradlew spotlessApply --daemon && exit 0;;
+        [Nn] ) echo "please run ./gradlew spotlessApply to continue"; exit 1;;
+        * ) echo "Please answer y (yes) or n (no):" && continue;
+    esac
+    done
+else
+    echo "Lint checks passed with return code $status"
+    exit 0
+fi
+exit 0
+exec <&-

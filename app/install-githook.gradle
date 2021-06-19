@@ -1,0 +1,12 @@
+task installGitHook(type: Copy) {
+    def suffix = "macos"
+    File preCommitFile = new File(rootProject.rootDir, ".git/hooks/pre-commit-$suffix")
+    if (!preCommitFile.exists()) {
+        from new File(rootProject.rootDir, "scripts/pre-commit-$suffix")
+        into { new File(rootProject.rootDir, '.git/hooks') }
+        rename("pre-commit-$suffix", 'pre-commit')
+        fileMode 0775
+    }
+}
+
+preBuild.dependsOn installGitHook
