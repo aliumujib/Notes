@@ -1,8 +1,8 @@
-package com.task.notes.cache
+package com.task.noteapp.data.repository.notes
 
 import com.task.notes.cache.models.NoteEntity
 
-object DaoTestUtils {
+object RepoTestUtils {
 
     private val notesEntity1 =
         NoteEntity(
@@ -34,5 +34,10 @@ object DaoTestUtils {
             43576732445
         )
 
-    val dummyList = listOf(notesEntity1, notesEntity2, notesEntity3)
+    val dummyDaoList = listOf(notesEntity1, notesEntity2, notesEntity3)
+
+    val dummyList = dummyDaoList.map {
+        noteEntityToNote(it)
+    }
+
 }
