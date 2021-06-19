@@ -6,4 +6,3 @@ include ':features:noteseditor'
 
 rootProject.name = "NoteApp"
 include ':libraries:cache'
-include ':libraries:repository'

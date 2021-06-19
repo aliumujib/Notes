@@ -23,7 +23,7 @@ abstract class NotesDao {
     abstract fun getNotes(): List<NoteEntity>
 
     @Query("SELECT * FROM notes where _id == :id")
-    abstract fun getNoteWithId(id: Int): NoteEntity
+    abstract suspend fun getNoteWithId(id: Int): NoteEntity
 
     @Query("DELETE FROM notes")
     abstract suspend fun deleteNotes()

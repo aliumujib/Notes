@@ -4,6 +4,7 @@ import com.google.common.truth.Truth.assertThat
 import com.task.notes.cache.dao.NotesDao
 import com.task.notes.cache.models.NoteEntity
 import io.mockk.MockKAnnotations
+import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -50,7 +51,7 @@ class NotesRepositoryTest {
     @Test
     fun test_fetchNoteCorrectlyCallsNotesDao() = runBlockingTest {
         val noteEntity = RepoTestUtils.dummyDaoList[0]
-        every { notesDao.getNoteWithId(noteEntity._id) } returns RepoTestUtils.dummyDaoList.first { noteEntity._id == it._id }
+        coEvery { notesDao.getNoteWithId(noteEntity._id) } returns RepoTestUtils.dummyDaoList.first { noteEntity._id == it._id }
         val expected = noteEntityToNote(noteEntity)
         val actual = repository.fetchNote(noteEntity._id)
         assertThat(expected).isEqualTo(actual)
