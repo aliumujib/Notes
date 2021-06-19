@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--UI Kit -->
+    <color name="color_toolbar">#121212</color>
+    <color name="color_status_bar">#121212</color>
+    <color name="color_primary_text">#FFFFFF</color>
+    <color name="color_secondary_text">#848E9C</color>
+    <color name="color_window_bg">#121212</color>
+
+</resources>
