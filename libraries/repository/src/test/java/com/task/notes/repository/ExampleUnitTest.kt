@@ -1,4 +1,4 @@
-package com.task.noteapp.data
+package com.task.notes.repository
 
 import org.junit.Test
 

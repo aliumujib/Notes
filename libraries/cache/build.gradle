@@ -43,7 +43,6 @@ android {
 
 dependencies {
 
-    //api project(':libraries:coremodels')
     kapt deps.room.compiler
     implementation deps.room.runtime
     implementation deps.room.ktx
@@ -51,12 +50,6 @@ dependencies {
     implementation deps.multidex
 
     kapt deps.dagger.hilt_compiler
-
-    testImplementation deps.unitTest.junit
-    testImplementation deps.unitTest.mockk
-    testImplementation deps.unitTest.coroutines
-    testImplementation deps.unitTest.androidx_core
-    testImplementation deps.unitTest.core_testing
 
     androidTestImplementation deps.instrumentationTest.junitktx
     androidTestImplementation deps.unitTest.coroutines

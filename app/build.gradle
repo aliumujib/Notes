@@ -7,6 +7,7 @@ plugins {
 }
 
 apply from: '../dependencies.gradle'
+apply from: 'install-githook.gradle'
 
 android {
     compileSdkVersion 30

@@ -4,18 +4,16 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.google.common.base.Predicates.equalTo
 import com.google.common.truth.Truth
 import com.task.notes.cache.dao.NotesDao
 import com.task.notes.cache.db.Database
-import com.task.notes.cache.models.NotesEntity
+import com.task.notes.cache.models.NoteEntity
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.hamcrest.MatcherAssert.assertThat
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.io.IOException
 
 
 @RunWith(AndroidJUnit4::class)
@@ -35,11 +33,12 @@ class NotesDaoTest {
         db.close()
     }
 
+    @ExperimentalCoroutinesApi
     @Test
     fun writeNoteAndReadInList() = runBlockingTest {
-        val notes: List<NotesEntity> = DaoTestUtils.dummyList
+        val notes: List<NoteEntity> = DaoTestUtils.dummyList
         notesDao.saveNotes(notes)
-        val notesData: List<NotesEntity> = notesDao.getNotes()
-        Truth.assertThat(notesData).isEqualTo(notes)
+        val noteData: List<NoteEntity> = notesDao.getNotes()
+        Truth.assertThat(noteData).isEqualTo(notes)
     }
 }

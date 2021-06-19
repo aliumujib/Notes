@@ -4,12 +4,12 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.task.notes.cache.dao.NotesDao
-import com.task.notes.cache.models.NotesEntity
+import com.task.notes.cache.models.NoteEntity
 
 
 @Database(
     entities = [
-        NotesEntity::class,
+        NoteEntity::class,
     ],
     version = 1,
 )
