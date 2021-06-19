@@ -6,7 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth
 import com.task.notes.cache.dao.NotesDao
-import com.task.notes.cache.db.Database
+import com.task.notes.cache.db.NotesDatabase
 import com.task.notes.cache.models.NoteEntity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -19,12 +19,12 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class NotesDaoTest {
     private lateinit var notesDao: NotesDao
-    private lateinit var db: Database
+    private lateinit var db: NotesDatabase
 
     @Before
     fun createDb() {
         val context: Context = ApplicationProvider.getApplicationContext()
-        db = Room.inMemoryDatabaseBuilder(context, Database::class.java).build()
+        db = Room.inMemoryDatabaseBuilder(context, NotesDatabase::class.java).build()
         notesDao = db.notesDao()
     }
 

@@ -14,7 +14,7 @@ import com.task.notes.cache.models.NoteEntity
     version = 1,
 )
 @TypeConverters()
-abstract class Database : RoomDatabase() {
+abstract class NotesDatabase : RoomDatabase() {
 
     abstract fun notesDao(): NotesDao
 

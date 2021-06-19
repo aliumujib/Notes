@@ -2,7 +2,7 @@ package com.task.notes.cache.di
 
 import android.content.Context
 import androidx.room.Room
-import com.task.notes.cache.db.Database
+import com.task.notes.cache.db.NotesDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,8 +24,8 @@ object BaseDataModule {
     @Provides
     @Singleton
     @NotesDBFactory
-    fun provideDatabaseProvider(@ApplicationContext context: Context): Database {
-        return Room.databaseBuilder(context, Database::class.java, DATABASE_NAME)
+    fun provideDatabaseProvider(@ApplicationContext context: Context): NotesDatabase {
+        return Room.databaseBuilder(context, NotesDatabase::class.java, DATABASE_NAME)
             .addMigrations() // TODO: Deal with migrations
             .fallbackToDestructiveMigration()
             .build()

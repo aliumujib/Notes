@@ -43,6 +43,8 @@ dependencies {
     implementation deps.dagger.hilt
     implementation deps.kotlin.coroutines_android
     implementation deps.jodatime
+    implementation deps.room.runtime
+    implementation deps.room.ktx
 
     kapt deps.dagger.hilt_compiler
 
