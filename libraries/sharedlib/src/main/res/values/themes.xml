@@ -1,0 +1,53 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.Notes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_toolbar</item>
+        <item name="colorPrimaryDark">@color/color_toolbar</item>
+        <item name="colorAccent">@color/color_toolbar</item>
+        <item name="fontFamily">@font/maisonneue_book</item>
+        <item name="android:textColor">@color/color_secondary_text</item>
+        <item name="android:windowBackground">@color/color_window_bg</item>
+    </style>
+
+    <style name="Theme.Notes.BoldText" parent="">
+        <item name="android:fontFamily">@font/maisonneue_bold</item>
+        <item name="fontFamily">@font/maisonneue_bold</item>
+        <item name="android:textColor">@color/color_primary_text</item>
+        <item name="android:textSize">@dimen/bold_header_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.Notes.LightText" parent="">
+        <item name="android:fontFamily">@font/maisonneue_light</item>
+        <item name="android:textColor">@color/color_primary_text</item>
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/maisonneue_light</item>
+    </style>
+
+    <style name="Theme.Notes.MediumText" parent="">
+        <item name="android:fontFamily">@font/maisonneue_medium</item>
+        <item name="android:textColor">@color/color_primary_text</item>
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/maisonneue_medium</item>
+    </style>
+
+    <style name="Theme.Notes.ToolBarStyle.TitleText" parent="Theme.Notes.MediumText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.Notes.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="TextFieldTheme" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+</resources>

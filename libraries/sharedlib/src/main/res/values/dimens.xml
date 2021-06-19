@@ -1,0 +1,46 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="title_toolbar_height">100dp</dimen>
+    <dimen name="eight_space">64dp</dimen>
+    <dimen name="seven_space">54dp</dimen>
+    <dimen name="six_space">48dp</dimen>
+    <dimen name="four_space">32dp</dimen>
+    <dimen name="five_space">40dp</dimen>
+    <dimen name="twelve_space">96dp</dimen>
+    <dimen name="sixteen_space">124dp</dimen>
+    <dimen name="one_space">8dp</dimen>
+    <dimen name="one_half_space">12dp</dimen>
+    <dimen name="two_space">16dp</dimen>
+    <dimen name="two_and_half_space">20dp</dimen>
+    <dimen name="one_and_quarter_space">10dp</dimen>
+    <dimen name="card_stroke_width">1dp</dimen>
+    <dimen name="card_stroke_width_double">2dp</dimen>
+
+    <dimen name="three_space">24dp</dimen>
+    <dimen name="three_and_half_space">28dp</dimen>
+    <dimen name="three_quarters_space">6dp</dimen>
+    <dimen name="quarter_size">2dp</dimen>
+    <dimen name="half_space">4dp</dimen>
+    <dimen name="two_half_space">20dp</dimen>
+    <dimen name="one_and_half_space">12dp</dimen>
+    <dimen name="nine_space">72dp</dimen>
+    <dimen name="ten_space">80dp</dimen>
+    <dimen name="eleven_space">88dp</dimen>
+
+    <dimen name="text_8">8sp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_10">10sp</dimen>
+    <dimen name="text_15">15sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+    <dimen name="text_32">32sp</dimen>
+    <dimen name="text_36">36sp</dimen>
+    <dimen name="bold_toolbar_text_size">28sp</dimen>
+    <dimen name="bold_header_text_size">18sp</dimen>
+
+</resources>
