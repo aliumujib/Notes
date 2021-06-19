@@ -73,7 +73,7 @@ dependencies {
 
     implementation project(':features:noteslist')
     implementation project(':features:noteseditor')
-
+    implementation project(':libraries:sharedlib')
 
     implementation deps.dagger.hilt
 
