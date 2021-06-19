@@ -35,7 +35,7 @@ import kotlin.reflect.KProperty
 class ViewBindingDelegate<T : ViewBinding>(
     private val fragment: Fragment,
     private val viewBindingFactory: (View) -> T,
-    private val doBeforeDispose: (T) -> Unit = {},
+    private val doBeforeDispose: (T) -> Unit = {}
 ) : ReadOnlyProperty<Fragment, T>, DefaultLifecycleObserver {
 
     init {
@@ -84,7 +84,7 @@ class ViewBindingDelegate<T : ViewBinding>(
  */
 fun <T : ViewBinding> Fragment.viewBinding(
     viewBindingFactory: (View) -> T,
-    doBeforeDispose: (T) -> Unit = {},
+    doBeforeDispose: (T) -> Unit = {}
 ): ViewBindingDelegate<T> =
     ViewBindingDelegate(fragment = this, viewBindingFactory = viewBindingFactory, doBeforeDispose)
 

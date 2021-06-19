@@ -2,9 +2,6 @@ package com.task.notes.noteseditor
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.task.notes.noteseditor.ext.viewBinding
 import com.task.notesapp.noteseditor.R
 import com.task.notesapp.noteseditor.databinding.FragmentNotesEditorBinding
@@ -15,8 +12,5 @@ class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
-
-
 }
