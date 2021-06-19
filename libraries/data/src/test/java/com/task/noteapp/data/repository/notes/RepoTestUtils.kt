@@ -40,5 +40,4 @@ object RepoTestUtils {
     val dummyList = dummyDaoList.map {
         noteEntityToNote(it)
     }
-
 }

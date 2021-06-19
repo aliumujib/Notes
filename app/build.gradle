@@ -63,6 +63,10 @@ dependencies {
     implementation deps.ui.constraint_layout
     implementation deps.multidex
 
+    implementation project(':features:noteslist')
+    implementation project(':features:noteseditor')
+
+
     implementation deps.dagger.hilt
 
     kapt deps.dagger.hilt_compiler

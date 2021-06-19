@@ -30,7 +30,6 @@ class NotesRepositoryTest {
         repository = NotesRepository(notesDao)
     }
 
-
     @Test
     fun test_streamNotesCorrectlyCallsNotesDao() = runBlockingTest {
         every { notesDao.streamNotes() } returns flowOf(RepoTestUtils.dummyDaoList)

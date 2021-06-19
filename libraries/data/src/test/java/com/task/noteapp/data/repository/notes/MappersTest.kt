@@ -8,7 +8,6 @@ import com.task.notes.cache.models.NoteEntity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.joda.time.DateTime
-import org.joda.time.LocalDate
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
@@ -47,6 +46,4 @@ class MappersTest {
         val actual = noteToNoteEntity(note)
         assertThat(actual).isEqualTo(expected)
     }
-
-
 }

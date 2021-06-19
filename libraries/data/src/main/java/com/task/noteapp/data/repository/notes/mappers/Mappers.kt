@@ -4,7 +4,6 @@ import com.task.noteapp.models.Constants
 import com.task.noteapp.models.Note
 import com.task.notes.cache.models.NoteEntity
 import org.joda.time.DateTime
-import org.joda.time.LocalDateTime
 
 fun noteEntityToNote(noteEntity: NoteEntity): Note {
     return with(noteEntity) {
