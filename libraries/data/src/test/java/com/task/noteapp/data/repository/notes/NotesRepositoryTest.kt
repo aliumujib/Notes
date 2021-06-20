@@ -22,12 +22,12 @@ class NotesRepositoryTest {
     @MockK
     lateinit var notesDao: NotesDao
 
-    lateinit var repository: NotesRepository
+    lateinit var repository: NotesRepositoryImpl
 
     @Before
     fun setup() {
         MockKAnnotations.init(this, relaxed = true)
-        repository = NotesRepository(notesDao)
+        repository = NotesRepositoryImpl(notesDao)
     }
 
     @Test
@@ -42,8 +42,8 @@ class NotesRepositoryTest {
     fun test_saveNoteCorrectlyMapsDataAndCallsNotesDao() = runBlockingTest {
         val note = RepoTestUtils.dummyList[0]
         val noteEntity = noteToNoteEntity(note)
-        repository.saveNote(note)
-        coVerify(atMost = 1) {
+        repository.saveNote(note._id, note.title, note.note, note.imageURL, note.lastEdit.millis)
+        coVerify(exactly = 1) {
             notesDao.saveNote(noteEntity)
         }
     }

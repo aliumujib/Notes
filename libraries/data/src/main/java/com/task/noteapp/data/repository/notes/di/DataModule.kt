@@ -1,9 +1,10 @@
 package com.task.noteapp.data.repository.notes.di
 
 
-import com.task.noteapp.data.repository.notes.NotesRepository
+import com.task.noteapp.data.repository.notes.NotesRepositoryImpl
 import com.task.notes.cache.dao.NotesDao
 import com.task.notes.cache.db.NotesDatabase
+import com.task.notes.repository.NotesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -17,7 +18,7 @@ interface DataModule {
 
     @Binds
     @Singleton
-    fun bindRepository(repository: NotesRepository): NotesRepository
+    fun bindNotesRepository(repository: NotesRepositoryImpl): NotesRepository
 
 }
 

@@ -1,0 +1,37 @@
+package com.task.noteapp.data.repository.notes
+
+import com.task.noteapp.data.repository.notes.mappers.noteEntityToNote
+import com.task.noteapp.data.repository.notes.mappers.noteToNoteEntity
+import com.task.noteapp.models.Note
+import com.task.notes.cache.dao.NotesDao
+import com.task.notes.cache.models.NoteEntity
+import com.task.notes.repository.NotesRepository
+import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import org.joda.time.DateTime
+
+class NotesRepositoryImpl @Inject constructor(private val notesDao: NotesDao) : NotesRepository {
+
+    override fun streamNotes(): Flow<List<Note>> {
+        return notesDao.streamNotes().map {
+            it.map { note ->
+                noteEntityToNote(note)
+            }
+        }
+    }
+
+    override suspend fun saveNote(
+        id: Int,
+        title: String,
+        note: String,
+        imageURL: String?,
+        timeStamp: Long
+    ) {
+        return notesDao.saveNote(NoteEntity(id, title, note, imageURL, timeStamp))
+    }
+
+    override suspend fun fetchNote(id: Int): Note {
+        return noteEntityToNote(notesDao.getNoteWithId(id))
+    }
+}

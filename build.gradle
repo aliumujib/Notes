@@ -6,7 +6,7 @@ buildscript {
     ext.kotlin_version = "1.4.21"
     ext.spotless_version = '5.12.4'
     ext.navigation_version = '2.3.3'
-    ext.hilt_version = "2.36"
+    ext.hilt_version = "2.35"
 
     repositories {
         google()
@@ -30,6 +30,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url  'https://jitpack.io' }
     }
 }
 
