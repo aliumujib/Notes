@@ -38,10 +38,8 @@ class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
     private fun handleAction(action: SaveNoteViewModel.Companion.Action) {
         when (action) {
             SaveNoteViewModel.Companion.Action.GoBack -> {
-
             }
             SaveNoteViewModel.Companion.Action.None -> {
-
             }
         }
     }
@@ -53,18 +51,14 @@ class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
     }
 
     private fun handleViewState(viewState: SaveNoteViewModel.Companion.ViewState) {
-        when(viewState.loadState){
+        when (viewState.loadState) {
             SaveNoteViewModel.Companion.LoadState.Error -> {
-
             }
             SaveNoteViewModel.Companion.LoadState.Idle -> {
-
             }
             SaveNoteViewModel.Companion.LoadState.Loading -> {
-
             }
             SaveNoteViewModel.Companion.LoadState.Success -> {
-
             }
         }
     }
@@ -74,18 +68,13 @@ class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.done -> {
-
                 }
                 R.id.add_photo -> {
-
                 }
                 R.id.delete -> {
-
                 }
             }
             true
         }
     }
-
-
 }

@@ -6,7 +6,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 
 @ExperimentalCoroutinesApi
-class TestPostExecutionThreadImpl: PostExecutionThread {
+class TestPostExecutionThreadImpl : PostExecutionThread {
     override val ui: CoroutineDispatcher
         get() = TestCoroutineDispatcher()
     override val io: CoroutineDispatcher

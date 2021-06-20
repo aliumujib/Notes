@@ -10,5 +10,4 @@ class NotEmptyRule : ValidateRule {
         if (!NotNullRule().validate(data)) return false
         return data!!.isNotEmpty()
     }
-
 }

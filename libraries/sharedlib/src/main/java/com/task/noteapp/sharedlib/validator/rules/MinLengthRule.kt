@@ -2,7 +2,6 @@ package com.task.noteapp.sharedlib.validator.rules
 
 import com.inflow.android.utils.validator.ValidateRule
 
-
 class MinLengthRule(private val count: Int) :
     ValidateRule {
 

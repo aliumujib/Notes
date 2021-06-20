@@ -3,7 +3,6 @@ package com.task.noteapp.sharedlib.validator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 
-
 class FlowCombineValidator(private val flows: List<Flow<Boolean>>) {
 
     /**

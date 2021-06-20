@@ -28,5 +28,4 @@ abstract class UtilsModule {
 
     @Binds
     abstract fun bindsPostExecutionThread(postExecutionThread: PostExecutionThreadImpl): PostExecutionThread
-
 }

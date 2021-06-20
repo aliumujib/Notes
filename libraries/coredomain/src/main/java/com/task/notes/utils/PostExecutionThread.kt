@@ -2,7 +2,6 @@ package com.task.notes.utils
 
 import kotlinx.coroutines.CoroutineDispatcher
 
-
 interface PostExecutionThread {
 
     val ui: CoroutineDispatcher

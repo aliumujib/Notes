@@ -1,10 +1,10 @@
 package com.inflow.android.utils.validator
 
-
 open class Validator : LinkedHashSet<ValidateRule>() {
 
     open fun validate(
-        data: String, onSuccess: (() -> Unit)? = null,
+        data: String,
+        onSuccess: (() -> Unit)? = null,
         onError: ((String) -> Unit)? = null
     ): Boolean {
         Preconditions.atLeastOneNotNull(

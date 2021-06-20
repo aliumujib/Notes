@@ -7,11 +7,12 @@ import com.task.noteapp.sharedlib.ext.updateValue
 import com.task.notes.noteseditor.domain.FetchNoteUseCase
 import com.task.notes.noteseditor.domain.SaveNoteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 @ExperimentalCoroutinesApi
@@ -73,7 +74,6 @@ class SaveNoteViewModel @Inject constructor(
         }
     }
 
-
     companion object {
 
         data class ViewState(
@@ -81,7 +81,7 @@ class SaveNoteViewModel @Inject constructor(
             val lastVersion: Note?,
             val noteId: Int,
             val imageURL: String?,
-            val error: Throwable?,
+            val error: Throwable?
         ) {
             companion object {
                 fun init(): ViewState {
@@ -102,5 +102,4 @@ class SaveNoteViewModel @Inject constructor(
             object GoBack : Action()
         }
     }
-
 }

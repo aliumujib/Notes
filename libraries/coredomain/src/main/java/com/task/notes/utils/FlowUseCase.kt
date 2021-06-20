@@ -17,6 +17,4 @@ abstract class FlowUseCase<in Params, T> constructor(
         return this.build(params)
             .flowOn(postExecutionThread.io)
     }
-
-
 }

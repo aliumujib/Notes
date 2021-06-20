@@ -1,11 +1,11 @@
 package com.task.notesapp.noteseditor.domain
 
 import com.google.common.truth.Truth
-import com.task.notes.testsharedutils.DomainTestUtils
-import com.task.notes.testsharedutils.TestPostExecutionThreadImpl
 import com.task.noteapp.models.Note
 import com.task.notes.noteseditor.domain.FetchNoteUseCase
 import com.task.notes.repository.NotesRepository
+import com.task.notes.testsharedutils.DomainTestUtils
+import com.task.notes.testsharedutils.TestPostExecutionThreadImpl
 import com.task.notes.utils.NoParamsException
 import com.task.notes.utils.PostExecutionThread
 import io.mockk.MockKAnnotations
@@ -51,6 +51,4 @@ class FetchNoteUseCaseTest {
             notesRepository.fetchNote(note._id)
         }
     }
-
-
 }

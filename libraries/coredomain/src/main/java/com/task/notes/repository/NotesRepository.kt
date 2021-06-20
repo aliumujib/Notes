@@ -13,9 +13,8 @@ interface NotesRepository {
         title: String,
         note: String,
         imageURL: String?,
-        timeStamp:Long = DateTime().millis
+        timeStamp: Long = DateTime().millis
     )
 
     suspend fun fetchNote(id: Int): Note
-
 }

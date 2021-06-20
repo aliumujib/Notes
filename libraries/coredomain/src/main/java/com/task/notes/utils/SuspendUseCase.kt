@@ -17,5 +17,4 @@ abstract class SuspendUseCase<in P, R>(
      */
     @Throws(RuntimeException::class)
     protected abstract suspend fun execute(params: P?): R
-
 }

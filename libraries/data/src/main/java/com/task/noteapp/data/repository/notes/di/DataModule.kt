@@ -1,6 +1,5 @@
 package com.task.noteapp.data.repository.notes.di
 
-
 import com.task.noteapp.data.repository.notes.NotesRepositoryImpl
 import com.task.notes.cache.dao.NotesDao
 import com.task.notes.cache.db.NotesDatabase
@@ -19,7 +18,6 @@ interface DataModule {
     @Binds
     @Singleton
     fun bindNotesRepository(repository: NotesRepositoryImpl): NotesRepository
-
 }
 
 @Module
@@ -31,6 +29,4 @@ object Providers {
     fun provideNotesDao(database: NotesDatabase): NotesDao {
         return database.notesDao()
     }
-
-
 }

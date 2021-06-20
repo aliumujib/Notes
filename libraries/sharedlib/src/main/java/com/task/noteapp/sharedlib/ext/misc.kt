@@ -10,8 +10,6 @@ fun <T> MutableStateFlow<T>.updateValue(updateFn: T.() -> T): T {
     return updatedValue
 }
 
-
 fun <E> HashSet<E>.addAll(vararg item: E) {
     addAll(item.toList())
 }
-

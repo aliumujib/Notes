@@ -8,7 +8,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Qualifier
 import javax.inject.Singleton
 
 const val DATABASE_NAME = "notes_app"
@@ -25,5 +24,4 @@ object CacheModule {
             .fallbackToDestructiveMigration()
             .build()
     }
-
 }

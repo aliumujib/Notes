@@ -1,7 +1,6 @@
 package com.task.noteapp.data.repository.notes
 
 import com.task.noteapp.data.repository.notes.mappers.noteEntityToNote
-import com.task.noteapp.data.repository.notes.mappers.noteToNoteEntity
 import com.task.noteapp.models.Note
 import com.task.notes.cache.dao.NotesDao
 import com.task.notes.cache.models.NoteEntity
@@ -9,7 +8,6 @@ import com.task.notes.repository.NotesRepository
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import org.joda.time.DateTime
 
 class NotesRepositoryImpl @Inject constructor(private val notesDao: NotesDao) : NotesRepository {
 

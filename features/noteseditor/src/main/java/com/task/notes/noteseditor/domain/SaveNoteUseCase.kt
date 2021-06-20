@@ -1,11 +1,10 @@
 package com.task.notes.noteseditor.domain
 
 import com.task.noteapp.models.Constants
-import com.task.noteapp.models.Note
+import com.task.notes.repository.NotesRepository
 import com.task.notes.utils.NoParamsException
 import com.task.notes.utils.PostExecutionThread
 import com.task.notes.utils.SuspendUseCase
-import com.task.notes.repository.NotesRepository
 import javax.inject.Inject
 
 class SaveNoteUseCase @Inject constructor(

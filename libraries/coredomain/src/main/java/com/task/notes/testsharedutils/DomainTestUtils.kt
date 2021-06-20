@@ -33,5 +33,4 @@ object DomainTestUtils {
         )
 
     val dummyList = listOf(note1, note2, note3)
-
 }
