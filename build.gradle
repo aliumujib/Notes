@@ -6,7 +6,7 @@ buildscript {
     ext.kotlin_version = "1.4.21"
     ext.spotless_version = '5.12.4'
     ext.navigation_version = '2.3.3'
-    ext.hilt_version = "2.36"
+    ext.hilt_version = "2.35"
 
     repositories {
         google()
@@ -21,8 +21,6 @@ buildscript {
         classpath "com.diffplug.spotless:spotless-plugin-gradle:$spotless_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
@@ -30,6 +28,6 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url  'https://jitpack.io' }
     }
 }
-

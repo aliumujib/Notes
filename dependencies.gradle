@@ -23,7 +23,8 @@ versions.cardview = "1.0.0"
 versions.dagger = "2.32"
 versions.android_x_hilt_version = "1.0.0-alpha03"
 versions.multidex = "2.0.1"
-
+versions.unsplash_picker = "1.0.0"
+versions.flowbinding = "1.0.0-alpha02"
 // Tools
 versions.timber = "4.7.1"
 
@@ -52,6 +53,7 @@ groups.dagger = "com.google.dagger"
 groups.robolectric = "org.robolectric"
 groups.androidx_test = "androidx.test"
 groups.espresso = "androidx.test.espresso"
+groups.flow_binding = "io.github.reactivecircus.flowbinding"
 
 // Dependency definitions rest of file
 def deps = [:]
@@ -139,12 +141,18 @@ instrumentationTest.core = "$groups.androidx_test:core:$versions.support_test"
 instrumentationTest.junitktx = "androidx.test.ext:junit-ktx:$versions.testext"
 instrumentationTest.orchestrator = "$groups.androidx_test:orchestrator:$versions.support_test"
 instrumentationTest.ui_automator = "androidx.test.uiautomator:uiautomator:$versions.ui_automator"
-
 deps.instrumentationTest = instrumentationTest
+
+def flowBinding = [:]
+flowBinding.appcompat = "$groups.flow_binding:flowbinding-appcompat:$versions.flowbinding"
+flowBinding.core = "$groups.flow_binding:flowbinding-core:$versions.flowbinding"
+flowBinding.android = "$groups.flow_binding:flowbinding-android:$versions.flowbinding"
+deps.flowBinding = flowBinding
 
 // Lone wolfs...
 deps.gson = "com.google.code.gson:gson:$versions.gson"
 deps.multidex = "androidx.multidex:multidex:$versions.multidex"
 deps.jodatime = "joda-time:joda-time:$versions.jodatime"
-
+deps.unplash_picker = "com.github.unsplash:unsplash-photopicker-android:$versions.unsplash_picker"
+deps.javax_inject = "javax.inject:javax.inject:1"
 ext.deps = deps

@@ -19,7 +19,6 @@ class MappersTest {
             "Title 1",
             "Content 1",
             "http://unsplash.com",
-            1624098633,
             1624248633
         )
 
@@ -29,7 +28,6 @@ class MappersTest {
             "Title 1",
             "Content 1",
             "http://unsplash.com",
-            DateTime(1624098633),
             DateTime(1624248633)
         )
 

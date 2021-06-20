@@ -54,14 +54,25 @@ dependencies {
     implementation deps.support.core_ktx
     implementation deps.ui.material
     implementation deps.ui.constraint_layout
+    implementation deps.flowBinding.appcompat
     implementation deps.lifecycle.runtime_ktx
     implementation deps.lifecycle.viewmodel_ktx
     implementation deps.lifecycle.livedata_ktx
     implementation deps.lifecycle.livedata_commons
+    implementation project(':libraries:sharedlib')
+    implementation project(':libraries:coredomain')
+    implementation project(':libraries:coremodels')
 
     implementation deps.dagger.hilt
 
     kapt deps.dagger.hilt_compiler
+
+    testImplementation deps.unitTest.junit
+    testImplementation deps.unitTest.mockk
+    testImplementation deps.unitTest.coroutines
+    testImplementation deps.unitTest.androidx_core
+    testImplementation deps.unitTest.core_testing
+    testImplementation deps.unitTest.truth
 
     androidTestImplementation deps.instrumentationTest.espresso
     androidTestImplementation deps.instrumentationTest.espressoidlingresource

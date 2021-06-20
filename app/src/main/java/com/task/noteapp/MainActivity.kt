@@ -3,7 +3,9 @@ package com.task.noteapp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.task.noteapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

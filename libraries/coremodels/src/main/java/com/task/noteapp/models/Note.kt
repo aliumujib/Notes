@@ -7,6 +7,5 @@ data class Note(
     val title: String,
     val note: String,
     val imageURL: String,
-    val createdAt: DateTime,
-    val editedAt: DateTime
+    val lastEdit: DateTime
 )

@@ -12,7 +12,6 @@ fun noteEntityToNote(noteEntity: NoteEntity): Note {
             title,
             note,
             imageURL ?: Constants.NOT_AVAILABLE,
-            DateTime(createdAt),
             DateTime(editedAt)
         )
     }
@@ -20,6 +19,6 @@ fun noteEntityToNote(noteEntity: NoteEntity): Note {
 
 fun noteToNoteEntity(noteModel: Note): NoteEntity {
     return with(noteModel) {
-        NoteEntity(_id, title, note, imageURL, createdAt.millis, editedAt.millis)
+        NoteEntity(_id, title, note, imageURL, lastEdit.millis)
     }
 }

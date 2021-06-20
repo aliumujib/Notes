@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 apply from: '../../dependencies.gradle'
@@ -33,6 +34,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -42,6 +46,12 @@ dependencies {
     implementation deps.support.navigation_ui
     implementation deps.support.app_compat
     implementation deps.support.core_ktx
+    implementation deps.flowBinding.android
+
+    implementation deps.dagger.hilt
+
+    kapt deps.dagger.hilt_compiler
+
     implementation deps.ui.material
     implementation deps.ui.constraint_layout
     implementation deps.lifecycle.runtime_ktx

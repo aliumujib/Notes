@@ -1,4 +1,4 @@
-package com.task.notes.noteseditor.ext
+package com.task.noteapp.sharedlib.ext
 
 /*
  * Copyright (C) 2018 The Android Open Source Project
