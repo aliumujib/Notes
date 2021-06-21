@@ -63,8 +63,6 @@ dependencies {
     implementation project(':libraries:coremodels')
 
     implementation deps.dagger.hilt
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     kapt deps.dagger.hilt_compiler
 

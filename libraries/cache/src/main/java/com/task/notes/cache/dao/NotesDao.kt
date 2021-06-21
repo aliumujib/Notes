@@ -30,5 +30,4 @@ abstract class NotesDao {
 
     @Query("DELETE FROM notes where _id == :id")
     abstract fun deleteNoteWithId(id: Int)
-
 }
