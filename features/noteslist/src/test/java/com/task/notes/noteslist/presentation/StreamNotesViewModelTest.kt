@@ -10,7 +10,6 @@ import com.task.notes.testsharedutils.DomainTestUtils
 import com.task.notes.utils.NoParamsException
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
-import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
@@ -41,12 +40,13 @@ class StreamNotesViewModelTest {
 
     @Test
     fun test_streamNotesEmitsStatesCorrectlyWhenSuccessful() = runBlockingTest {
-       val job = testScope.launch {
-           coEvery { streamNotesUseCase.build() } returns flowOf(notes)
-           val expected = listOf(ViewState(Loading, emptyList(), null), ViewState(Success, notes, null))
-           val currentState = streamNotesViewModel.viewState.toList()
-           assertThat(currentState).isEqualTo(expected)
-       }
+        val job = testScope.launch {
+            coEvery { streamNotesUseCase.build() } returns flowOf(notes)
+            val expected =
+                listOf(ViewState(Loading, emptyList(), null), ViewState(Success, notes, null))
+            val currentState = streamNotesViewModel.viewState.toList()
+            assertThat(currentState).isEqualTo(expected)
+        }
         job.cancel()
     }
 
@@ -54,11 +54,13 @@ class StreamNotesViewModelTest {
     fun test_streamNotesEmitsStatesCorrectlyWhenFailed() = runBlockingTest {
         val job = testScope.launch {
             coEvery { streamNotesUseCase.build() } throws NoParamsException()
-            val expected = listOf(ViewState(Loading, emptyList(), null), ViewState(Error, emptyList(), NoParamsException()))
+            val expected = listOf(
+                ViewState(Loading, emptyList(), null),
+                ViewState(Error, emptyList(), NoParamsException())
+            )
             val currentState = streamNotesViewModel.viewState.toList()
             assertThat(currentState).isEqualTo(expected)
         }
         job.cancel()
     }
-
 }
