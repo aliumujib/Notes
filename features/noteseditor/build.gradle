@@ -76,12 +76,4 @@ dependencies {
     testImplementation deps.unitTest.core_testing
     testImplementation deps.unitTest.truth
 
-    androidTestImplementation deps.instrumentationTest.espresso
-    androidTestImplementation deps.instrumentationTest.espressoidlingresource
-    androidTestImplementation deps.instrumentationTest.espressocontrib
-    androidTestImplementation deps.instrumentationTest.runner
-    androidTestImplementation deps.instrumentationTest.rules
-    androidTestImplementation deps.instrumentationTest.mockkandroid
-    androidTestImplementation deps.instrumentationTest.junitktx
-    androidTestImplementation deps.unitTest.core_testing
 }

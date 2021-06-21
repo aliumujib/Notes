@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Notes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_toolbar</item>
+        <item name="colorPrimaryDark">@color/color_toolbar</item>
+        <item name="colorAccent">@color/color_toolbar</item>
+        <item name="fontFamily">@font/maisonneue_book</item>
+        <item name="android:textColor">@color/color_primary_text</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+</resources>

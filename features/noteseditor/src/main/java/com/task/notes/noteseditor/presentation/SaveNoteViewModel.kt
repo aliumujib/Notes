@@ -1,12 +1,13 @@
 package com.task.notes.noteseditor.presentation
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.task.noteapp.models.Note
+import com.task.noteapp.sharedlib.ext.getViewModelScope
 import com.task.noteapp.sharedlib.ext.updateValue
 import com.task.notes.noteseditor.domain.FetchNoteUseCase
 import com.task.notes.noteseditor.domain.SaveNoteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import java.lang.Exception
 import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 @ExperimentalCoroutinesApi
 class SaveNoteViewModel @Inject constructor(
+    private val scope: CoroutineScope?,
     private val fetchNote: FetchNoteUseCase,
     private val saveNote: SaveNoteUseCase
 ) : ViewModel() {
@@ -25,7 +27,7 @@ class SaveNoteViewModel @Inject constructor(
     val viewState: StateFlow<ViewState> = _viewState
 
     private val _actions: MutableStateFlow<Action> = MutableStateFlow(Action.None)
-    val actionState: StateFlow<Action> = _actions
+    val actions: StateFlow<Action> = _actions
 
     fun setNoteId(id: Int) {
         _viewState.updateValue {
@@ -40,13 +42,20 @@ class SaveNoteViewModel @Inject constructor(
     }
 
     fun saveNote(title: String, note: String) {
-        viewModelScope.launch {
+        getViewModelScope(scope).launch {
             try {
                 attemptSave(title, note)
             } catch (e: Exception) {
                 _viewState.updateValue {
-                    copy(loadState = LoadState.Idle, error = e)
+                    copy(loadState = LoadState.Error, error = e)
                 }
+            }
+
+            _viewState.updateValue {
+                copy(loadState = LoadState.Success, error = null)
+            }
+            _actions.updateValue {
+                Action.GoBack
             }
         }
     }
@@ -66,12 +75,6 @@ class SaveNoteViewModel @Inject constructor(
                 viewState.value.imageURL
             )
         )
-        _viewState.updateValue {
-            copy(loadState = LoadState.Success, error = null)
-        }
-        _actions.updateValue {
-            Action.GoBack
-        }
     }
 
     fun deleteNote() {

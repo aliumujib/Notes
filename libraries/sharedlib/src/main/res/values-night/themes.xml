@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Theme.Notes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_toolbar</item>
+        <item name="colorPrimaryDark">@color/color_toolbar</item>
+        <item name="colorAccent">@color/color_toolbar</item>
+        <item name="fontFamily">@font/maisonneue_book</item>
+        <item name="android:textColor">@color/color_primary_text</item>
+    </style>
+
+</resources>

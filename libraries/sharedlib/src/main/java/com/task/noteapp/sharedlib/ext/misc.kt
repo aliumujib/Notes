@@ -1,5 +1,8 @@
 package com.task.noteapp.sharedlib.ext
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 
@@ -10,6 +13,5 @@ fun <T> MutableStateFlow<T>.updateValue(updateFn: T.() -> T): T {
     return updatedValue
 }
 
-fun <E> HashSet<E>.addAll(vararg item: E) {
-    addAll(item.toList())
-}
+fun ViewModel.getViewModelScope(coroutineScope: CoroutineScope?) =
+    coroutineScope ?: this.viewModelScope
