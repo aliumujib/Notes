@@ -43,8 +43,6 @@ dependencies {
 
     implementation deps.support.fragment
     implementation deps.support.fragment_ktx
-    implementation deps.support.navigation_fragment
-    implementation deps.support.navigation_ui
     implementation deps.support.app_compat
     implementation deps.support.core_ktx
     implementation deps.ui.material

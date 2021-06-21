@@ -11,11 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.task.noteapp.models.Note
 import com.task.noteapp.sharedlib.ext.dpToPx
 import com.task.noteapp.sharedlib.ext.viewBinding
+import com.task.noteapp.sharedlib.navigator.Navigator
 import com.task.notes.noteslist.R
 import com.task.notes.noteslist.databinding.FragmentNotesListBinding
 import com.task.notes.noteslist.presentation.NotesListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import io.cabriole.decorator.LinearMarginDecoration
+import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -27,14 +29,24 @@ class NotesListFragment : Fragment(R.layout.fragment_notes_list), ItemClickListe
     private val viewModel by viewModels<NotesListViewModel>()
     private val binding: FragmentNotesListBinding by viewBinding(FragmentNotesListBinding::bind)
 
+    @Inject
+    lateinit var navigator: Navigator
+
     private val notesAdapter: NotesAdapter by lazy {
         NotesAdapter(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
         initRecyclerView()
         listenForStateChanges()
+    }
+
+    private fun initViews() {
+        binding.addButton.setOnClickListener {
+            navigator.goToNoteEditor(null)
+        }
     }
 
     private fun initRecyclerView() {
@@ -85,5 +97,6 @@ class NotesListFragment : Fragment(R.layout.fragment_notes_list), ItemClickListe
     }
 
     override fun onItemClick(model: Note) {
+        navigator.goToNoteEditor(model._id)
     }
 }

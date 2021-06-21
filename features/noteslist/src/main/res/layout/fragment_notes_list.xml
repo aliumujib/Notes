@@ -59,6 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottomAppBar"
+        android:id="@+id/add_button"
         app:srcCompat="@drawable/shape_square_plus" />
 
     <TextView

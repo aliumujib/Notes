@@ -1,5 +1,6 @@
 package com.task.notes.noteseditor.presentation
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.task.noteapp.models.Note
 import com.task.noteapp.sharedlib.ext.getViewModelScope
@@ -19,6 +20,7 @@ import kotlinx.coroutines.launch
 @ExperimentalCoroutinesApi
 class SaveNoteViewModel @Inject constructor(
     private val scope: CoroutineScope?,
+    savedStateHandle: SavedStateHandle,
     private val fetchNote: FetchNoteUseCase,
     private val saveNote: SaveNoteUseCase
 ) : ViewModel() {
@@ -28,6 +30,28 @@ class SaveNoteViewModel @Inject constructor(
 
     private val _actions: MutableStateFlow<Action> = MutableStateFlow(Action.None)
     val actions: StateFlow<Action> = _actions
+
+    init {
+        savedStateHandle.get<Int>(ARG_NOTE_ID)?.let {
+            setNoteId(it)
+            fetchLastVersionData(it)
+        }
+    }
+
+    private fun fetchLastVersionData(id: Int) {
+        getViewModelScope(scope).launch {
+            try {
+                val note = fetchNote(FetchNoteUseCase.Params.make(id))
+                _viewState.updateValue {
+                    copy(loadState = LoadState.Success, error = null, lastVersion = note, imageURL = note.imageURL)
+                }
+            } catch (e: Exception) {
+                _viewState.updateValue {
+                    copy(loadState = LoadState.Error, error = e)
+                }
+            }
+        }
+    }
 
     fun setNoteId(id: Int) {
         _viewState.updateValue {
@@ -81,6 +105,7 @@ class SaveNoteViewModel @Inject constructor(
     }
 
     companion object {
+        private const val ARG_NOTE_ID = "noteId"
 
         data class ViewState(
             val loadState: LoadState,
