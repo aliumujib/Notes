@@ -7,9 +7,11 @@ import com.task.notes.testsharedutils.TestPostExecutionThreadImpl
 import com.task.notes.utils.PostExecutionThread
 import io.mockk.MockKAnnotations
 import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Before
@@ -21,19 +23,20 @@ class StreamNotesUseCaseTest {
     @MockK
     lateinit var notesRepository: NotesRepository
 
-    lateinit var sut: StreamNotesUseCase
+    private lateinit var sut: StreamNotesUseCase
     private val postExecutionThread: PostExecutionThread = TestPostExecutionThreadImpl()
     private val notes = DomainTestUtils.dummyList
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxed = true)
-        sut = StreamNotesUseCase(notesRepository, TestPostExecutionThreadImpl())
+        sut = StreamNotesUseCase(notesRepository, postExecutionThread)
     }
 
     @Test
     fun test_streamNoteReturnsCorrectData() = runBlockingTest {
-       val actual = sut.build().first()
+        every { notesRepository.streamNotes() } returns flowOf(notes)
+        val actual = sut.build().first()
         coVerify(exactly = 1) {
             notesRepository.streamNotes()
         }
