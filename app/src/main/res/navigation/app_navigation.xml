@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_app"
+    app:startDestination="@+id/navigation_notes_list">
+
+    <fragment
+        android:id="@+id/navigation_notes_list"
+        android:name="com.task.notes.noteslist.ui.NotesListFragment"
+        android:label="@string/search_your_notes">
+        <action
+            android:id="@+id/action_navigation_notes_list_to_navigation_notes_editor"
+            app:destination="@+id/navigation_notes_editor" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notes_editor"
+        android:name="com.task.notes.noteseditor.ui.NotesEditorFragment"
+        android:label="@string/edit_notes">
+
+        <argument
+            android:name="noteId"
+            android:defaultValue="0"
+            app:argType="integer" />
+
+    </fragment>
+
+</navigation>

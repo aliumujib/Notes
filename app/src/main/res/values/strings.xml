@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NoteApp</string>
+    <string name="edit_notes">Edit Note</string>
 </resources>
