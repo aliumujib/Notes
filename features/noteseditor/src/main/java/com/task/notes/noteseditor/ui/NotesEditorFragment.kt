@@ -40,7 +40,7 @@ class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
     }
 
     private fun listenForActions() {
-        viewModel.actionState.onEach {
+        viewModel.actions.onEach {
             handleAction(it)
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }

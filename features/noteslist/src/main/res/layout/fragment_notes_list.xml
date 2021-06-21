@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="@dimen/two_space"
+        app:cardCornerRadius="@dimen/half_space">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:paddingHorizontal="@dimen/two_space"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@drawable/menu"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:src="@drawable/menu"
+                android:layout_weight="1"
+                style="@style/Theme.Notes.MediumText"
+                android:layout_marginHorizontal="@dimen/two_space"
+                android:text="@string/search_your_notes"
+                android:textColor="@color/color_secondary_text"
+                android:layout_gravity="center"
+                android:textSize="@dimen/text_14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/notes_list"
+        android:paddingVertical="@dimen/ten_space"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"/>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabAlignmentMode="end"
+        app:menu="@menu/bottom_app_bar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/bottomAppBar"
+        app:srcCompat="@drawable/shape_square_plus" />
+
+    <TextView
+        style="@style/Theme.Notes.MediumText"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:id="@+id/error_empty_view"
+        android:layout_height="wrap_content"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -6,6 +6,6 @@ data class Note(
     val _id: Int,
     val title: String,
     val note: String,
-    val imageURL: String,
+    val imageURL: String?,
     val lastEdit: DateTime
 )

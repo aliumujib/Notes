@@ -24,7 +24,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class UtilsModule {
+abstract class ThreadingModule {
 
     @Binds
     abstract fun bindsPostExecutionThread(postExecutionThread: PostExecutionThreadImpl): PostExecutionThread

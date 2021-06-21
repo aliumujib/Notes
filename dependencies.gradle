@@ -26,7 +26,7 @@ versions.multidex = "2.0.1"
 versions.unsplash_picker = "1.0.0"
 versions.flowbinding = "1.0.0-alpha02"
 versions.coil_version = "1.0.0-rc3"
-
+versions.cabriole = "1.0.0"
 // Tools
 versions.timber = "4.7.1"
 
@@ -158,4 +158,5 @@ deps.jodatime = "joda-time:joda-time:$versions.jodatime"
 deps.unplash_picker = "com.github.unsplash:unsplash-photopicker-android:$versions.unsplash_picker"
 deps.javax_inject = "javax.inject:javax.inject:1"
 deps.coil = "io.coil-kt:coil:$versions.coil_version"
+deps.cabriole = "io.cabriole:decorator:$versions.cabriole"
 ext.deps = deps
