@@ -28,5 +28,4 @@ class PickImageContract : ActivityResultContract<Boolean, UnsplashPhoto?>() {
             null
         }
     }
-
 }

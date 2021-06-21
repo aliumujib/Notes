@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.onEach
 @ExperimentalCoroutinesApi
 class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
 
-    private val binding : FragmentNotesEditorBinding by viewBinding(FragmentNotesEditorBinding::bind)
+    private val binding: FragmentNotesEditorBinding by viewBinding(FragmentNotesEditorBinding::bind)
     private val viewModel by viewModels<SaveNoteViewModel>()
 
     private val pickImageCall =
@@ -96,5 +96,4 @@ class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
             true
         }
     }
-
 }
