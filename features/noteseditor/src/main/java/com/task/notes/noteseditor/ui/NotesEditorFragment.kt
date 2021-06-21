@@ -14,10 +14,10 @@ import com.task.notes.noteseditor.presentation.SaveNoteViewModel
 import com.task.notesapp.noteseditor.R
 import com.task.notesapp.noteseditor.databinding.FragmentNotesEditorBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import javax.inject.Inject
 
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
@@ -56,7 +56,7 @@ class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
                 navigator.goBack()
             }
             SaveNoteViewModel.Companion.Action.None -> {
-                //no operation
+                // no operation
             }
         }
     }

@@ -21,5 +21,4 @@ object NavigatorModule {
     fun providesNavigator(activity: FragmentActivity): Navigator {
         return NavigatorImpl { (activity as MainActivity).findNavController(R.id.nav_host_fragment_container) }
     }
-
 }

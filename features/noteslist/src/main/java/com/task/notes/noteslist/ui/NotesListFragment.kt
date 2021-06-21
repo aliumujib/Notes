@@ -17,10 +17,10 @@ import com.task.notes.noteslist.databinding.FragmentNotesListBinding
 import com.task.notes.noteslist.presentation.NotesListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import io.cabriole.decorator.LinearMarginDecoration
+import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import javax.inject.Inject
 
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi

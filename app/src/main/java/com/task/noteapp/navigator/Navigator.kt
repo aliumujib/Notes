@@ -9,12 +9,12 @@ import javax.inject.Provider
 class NavigatorImpl(private val navController: Provider<NavController>) : Navigator {
 
     override fun goToNoteEditor(noteId: Int?) {
-        if(noteId != null){
+        if (noteId != null) {
             navController.get().navigate(
                 R.id.action_navigation_notes_list_to_navigation_notes_editor,
                 bundleOf("noteId" to noteId)
             )
-        }else{
+        } else {
             navController.get().navigate(
                 R.id.action_navigation_notes_list_to_navigation_notes_editor
             )
@@ -24,6 +24,4 @@ class NavigatorImpl(private val navController: Provider<NavController>) : Naviga
     override fun goBack() {
         navController.get().popBackStack()
     }
-
-
 }
