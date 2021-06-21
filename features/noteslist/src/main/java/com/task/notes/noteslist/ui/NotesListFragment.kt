@@ -22,12 +22,8 @@ class NotesListFragment : Fragment(R.layout.fragment_notes_list) {
     }
 
     private fun listenForViewStateChanges() {
-
     }
 
     private fun initRecyclerView() {
-
     }
-
-
 }

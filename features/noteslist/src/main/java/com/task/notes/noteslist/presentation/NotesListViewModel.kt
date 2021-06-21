@@ -8,6 +8,7 @@ import com.task.notes.noteslist.domain.StreamNotesUseCase
 import com.task.notes.noteslist.presentation.NotesListViewModel.Companion.LoadState.Loading
 import com.task.notes.noteslist.presentation.NotesListViewModel.Companion.LoadState.Success
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,7 +16,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
-import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @HiltViewModel
@@ -47,13 +47,12 @@ class NotesListViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-
     companion object {
 
         data class ViewState(
             val loadState: LoadState,
             val notes: List<Note>,
-            val error: Throwable?,
+            val error: Throwable?
         ) {
             companion object {
                 fun init(): ViewState {
@@ -68,6 +67,5 @@ class NotesListViewModel @Inject constructor(
             object Error : LoadState()
             object Success : LoadState()
         }
-
     }
 }

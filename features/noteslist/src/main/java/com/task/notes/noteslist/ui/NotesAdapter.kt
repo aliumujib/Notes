@@ -47,7 +47,7 @@ class NotesAdapter(private val itemClickListener: ItemClickListener<Note>?) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: Note) {
-            with(data){
+            with(data) {
                 binding.noteImage.isVisible = !imageURL.isNullOrEmpty()
                 imageURL?.let {
                     binding.noteImage.load(it)
@@ -55,7 +55,7 @@ class NotesAdapter(private val itemClickListener: ItemClickListener<Note>?) :
                 binding.noteTitle.text = title
                 binding.noteContent.text = note
                 binding.noteLastEdit.text = DateTimeFormat.forPattern("dd/MM/yyyy").print(lastEdit)
-                binding.root.children.forEach {  child->
+                binding.root.children.forEach { child ->
                     child.setOnClickListener {
                         clickListener?.onItemClick(data)
                     }
