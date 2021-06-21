@@ -53,6 +53,7 @@ dependencies {
     implementation deps.lifecycle.runtime_ktx
     implementation deps.coil
     implementation deps.jodatime
+    implementation deps.cabriole
 
     implementation deps.lifecycle.viewmodel_ktx
     implementation deps.lifecycle.livedata_ktx

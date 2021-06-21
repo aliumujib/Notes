@@ -61,4 +61,11 @@
         app:layout_anchor="@id/bottomAppBar"
         app:srcCompat="@drawable/shape_square_plus" />
 
+    <TextView
+        style="@style/Theme.Notes.MediumText"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:id="@+id/error_empty_view"
+        android:layout_height="wrap_content"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
