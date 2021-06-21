@@ -2,10 +2,13 @@ package com.task.notes.noteseditor.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import coil.load
 import com.task.noteapp.sharedlib.ext.viewBinding
+import com.task.notes.noteseditor.contracts.PickImageContract
 import com.task.notes.noteseditor.presentation.SaveNoteViewModel
 import com.task.notesapp.noteseditor.R
 import com.task.notesapp.noteseditor.databinding.FragmentNotesEditorBinding
@@ -18,8 +21,15 @@ import kotlinx.coroutines.flow.onEach
 @ExperimentalCoroutinesApi
 class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
 
-    private val binding by viewBinding(FragmentNotesEditorBinding::bind)
+    private val binding : FragmentNotesEditorBinding by viewBinding(FragmentNotesEditorBinding::bind)
     private val viewModel by viewModels<SaveNoteViewModel>()
+
+    private val pickImageCall =
+        registerForActivityResult(PickImageContract()) { result ->
+            result?.urls?.thumb?.let {
+                viewModel.setImageURl(it)
+            }
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,6 +71,12 @@ class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
             SaveNoteViewModel.Companion.LoadState.Success -> {
             }
         }
+
+        viewState.imageURL?.let {
+            binding.noteImage.isVisible = true
+            binding.noteImage.load(it)
+            binding.guideline.setGuidelinePercent(0.2f)
+        }
     }
 
     private fun initToolbar() {
@@ -68,13 +84,17 @@ class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.done -> {
+                    viewModel.saveNote(binding.titleField.text.toString(), binding.contentField.text.toString())
                 }
                 R.id.add_photo -> {
+                    pickImageCall.launch(false)
                 }
                 R.id.delete -> {
+                    viewModel.deleteNote()
                 }
             }
             true
         }
     }
+
 }

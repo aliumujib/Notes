@@ -56,6 +56,8 @@ dependencies {
     implementation deps.ui.constraint_layout
     implementation deps.flowBinding.appcompat
     implementation deps.lifecycle.runtime_ktx
+    implementation deps.unplash_picker
+    implementation deps.coil
     implementation deps.lifecycle.viewmodel_ktx
     implementation deps.lifecycle.livedata_ktx
     implementation deps.lifecycle.livedata_commons

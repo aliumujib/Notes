@@ -74,6 +74,10 @@ class SaveNoteViewModel @Inject constructor(
         }
     }
 
+    fun deleteNote() {
+
+    }
+
     companion object {
 
         data class ViewState(

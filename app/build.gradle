@@ -83,9 +83,10 @@ dependencies {
     implementation deps.multidex
     implementation deps.unplash_picker
 
+    //this is rather sub-optimal but I had to repeat these dependencies here in order to please dagger hilt
+    //you can read more at https://github.com/google/dagger/issues/1991#issuecomment-661245887
     implementation deps.room.runtime
     implementation deps.room.ktx
-
     implementation project(':libraries:sharedlib')
     implementation project(':libraries:data')
     implementation project(':libraries:cache')
@@ -94,8 +95,8 @@ dependencies {
     implementation project(':features:noteslist')
     implementation project(':features:noteseditor')
 
-    implementation deps.dagger.hilt
 
+    implementation deps.dagger.hilt
     kapt deps.dagger.hilt_compiler
 
     androidTestImplementation deps.instrumentationTest.espresso

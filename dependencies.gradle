@@ -25,6 +25,8 @@ versions.android_x_hilt_version = "1.0.0-alpha03"
 versions.multidex = "2.0.1"
 versions.unsplash_picker = "1.0.0"
 versions.flowbinding = "1.0.0-alpha02"
+versions.coil_version = "1.0.0-rc3"
+
 // Tools
 versions.timber = "4.7.1"
 
@@ -155,4 +157,5 @@ deps.multidex = "androidx.multidex:multidex:$versions.multidex"
 deps.jodatime = "joda-time:joda-time:$versions.jodatime"
 deps.unplash_picker = "com.github.unsplash:unsplash-photopicker-android:$versions.unsplash_picker"
 deps.javax_inject = "javax.inject:javax.inject:1"
+deps.coil = "io.coil-kt:coil:$versions.coil_version"
 ext.deps = deps
