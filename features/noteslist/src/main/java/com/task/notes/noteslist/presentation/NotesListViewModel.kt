@@ -3,11 +3,13 @@ package com.task.notes.noteslist.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.task.noteapp.models.Note
+import com.task.noteapp.sharedlib.ext.getViewModelScope
 import com.task.noteapp.sharedlib.ext.updateValue
 import com.task.notes.noteslist.domain.StreamNotesUseCase
 import com.task.notes.noteslist.presentation.NotesListViewModel.Companion.LoadState.Loading
 import com.task.notes.noteslist.presentation.NotesListViewModel.Companion.LoadState.Success
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,8 +22,8 @@ import kotlinx.coroutines.flow.onStart
 @ExperimentalCoroutinesApi
 @HiltViewModel
 class NotesListViewModel @Inject constructor(
-    private val streamNotes: StreamNotesUseCase
-) :
+    private val scope: CoroutineScope?,
+    private val streamNotes: StreamNotesUseCase) :
     ViewModel() {
 
     private val _viewState = MutableStateFlow(ViewState.init())
@@ -31,7 +33,7 @@ class NotesListViewModel @Inject constructor(
         streamNotes()
     }
 
-    private fun streamNotes() {
+    fun streamNotes() {
         streamNotes.build().onStart {
             _viewState.updateValue {
                 copy(loadState = Loading)
@@ -44,7 +46,7 @@ class NotesListViewModel @Inject constructor(
             _viewState.updateValue {
                 copy(loadState = LoadState.Error, error = it)
             }
-        }.launchIn(viewModelScope)
+        }.launchIn(getViewModelScope(scope))
     }
 
     companion object {
