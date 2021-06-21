@@ -1,0 +1,9 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_field_hint">Title</string>
+    <string name="content_field_hint">Note</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="delete_note_menu_item">Delete</string>
+    <string name="save_note_menu_item">Save</string>
+</resources>

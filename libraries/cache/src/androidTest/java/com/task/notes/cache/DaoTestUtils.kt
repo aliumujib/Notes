@@ -10,7 +10,6 @@ object DaoTestUtils {
             "Title 1",
             "Content 1",
             "http://unsplash.com",
-            120202020,
             202903443
         )
 
@@ -20,7 +19,6 @@ object DaoTestUtils {
             "Title 2",
             "Content 2",
             "http://unsplash.com",
-            1213445667,
             2345678989
         )
 
@@ -30,7 +28,6 @@ object DaoTestUtils {
             "Title 3",
             "Content 3",
             "http://unsplash.com",
-            2345677889,
             43576732445
         )
 

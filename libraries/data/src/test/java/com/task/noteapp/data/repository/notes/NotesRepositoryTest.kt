@@ -1,8 +1,9 @@
 package com.task.noteapp.data.repository.notes
 
 import com.google.common.truth.Truth.assertThat
+import com.task.noteapp.data.repository.notes.mappers.noteEntityToNote
+import com.task.noteapp.data.repository.notes.mappers.noteToNoteEntity
 import com.task.notes.cache.dao.NotesDao
-import com.task.notes.cache.models.NoteEntity
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -21,14 +22,13 @@ class NotesRepositoryTest {
     @MockK
     lateinit var notesDao: NotesDao
 
-    lateinit var repository: NotesRepository
+    lateinit var repository: NotesRepositoryImpl
 
     @Before
     fun setup() {
         MockKAnnotations.init(this, relaxed = true)
-        repository = NotesRepository(notesDao)
+        repository = NotesRepositoryImpl(notesDao)
     }
-
 
     @Test
     fun test_streamNotesCorrectlyCallsNotesDao() = runBlockingTest {
@@ -42,8 +42,8 @@ class NotesRepositoryTest {
     fun test_saveNoteCorrectlyMapsDataAndCallsNotesDao() = runBlockingTest {
         val note = RepoTestUtils.dummyList[0]
         val noteEntity = noteToNoteEntity(note)
-        repository.saveNote(note)
-        coVerify(atMost = 1) {
+        repository.saveNote(note._id, note.title, note.note, note.imageURL, note.lastEdit.millis)
+        coVerify(exactly = 1) {
             notesDao.saveNote(noteEntity)
         }
     }

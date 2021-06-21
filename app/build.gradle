@@ -32,10 +32,21 @@ android {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
         exclude("META-INF/*.kotlin_module")
     }
 
-    buildFeatures {
+    buildTypes {
+        debug {
+            buildConfigField "String", "UNSPLASH_API_ACCESS_KEY", '\"yaD0aV_H0dqC3lTOoEGgh57wQfGvWxLdRb-F8SU80PQ\"'
+            buildConfigField "String", "UNSPLASH_API_SECRET_KEY", '\"ZvX6qPgGclVBZGSASXBlrXjkvTf4GHmoc2oN01kYAi4\"'
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+    }
+
+        buildFeatures {
         viewBinding true
     }
 
@@ -68,11 +79,24 @@ dependencies {
     implementation deps.support.core_ktx
     implementation deps.ui.material
     implementation deps.ui.constraint_layout
-    implementation deps.ui.constraint_layout
+    implementation deps.troubleshooting.timber
     implementation deps.multidex
+    implementation deps.unplash_picker
+
+    //this is rather sub-optimal but I had to repeat these dependencies here in order to please dagger hilt
+    //you can read more at https://github.com/google/dagger/issues/1991#issuecomment-661245887
+    implementation deps.room.runtime
+    implementation deps.room.ktx
+    implementation project(':libraries:sharedlib')
+    implementation project(':libraries:data')
+    implementation project(':libraries:cache')
+    implementation project(':libraries:coredomain')
+    implementation project(':libraries:coremodels')
+    implementation project(':features:noteslist')
+    implementation project(':features:noteseditor')
+
 
     implementation deps.dagger.hilt
-
     kapt deps.dagger.hilt_compiler
 
     androidTestImplementation deps.instrumentationTest.espresso

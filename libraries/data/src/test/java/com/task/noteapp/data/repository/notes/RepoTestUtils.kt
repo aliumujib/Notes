@@ -1,5 +1,6 @@
 package com.task.noteapp.data.repository.notes
 
+import com.task.noteapp.data.repository.notes.mappers.noteEntityToNote
 import com.task.notes.cache.models.NoteEntity
 
 object RepoTestUtils {
@@ -10,7 +11,6 @@ object RepoTestUtils {
             "Title 1",
             "Content 1",
             "http://unsplash.com",
-            120202020,
             202903443
         )
 
@@ -20,7 +20,6 @@ object RepoTestUtils {
             "Title 2",
             "Content 2",
             "http://unsplash.com",
-            1213445667,
             2345678989
         )
 
@@ -30,7 +29,6 @@ object RepoTestUtils {
             "Title 3",
             "Content 3",
             "http://unsplash.com",
-            2345677889,
             43576732445
         )
 
@@ -39,5 +37,4 @@ object RepoTestUtils {
     val dummyList = dummyDaoList.map {
         noteEntityToNote(it)
     }
-
 }
