@@ -33,7 +33,7 @@ class NotesListViewModel @Inject constructor(
         streamNotes()
     }
 
-    fun streamNotes() {
+    private fun streamNotes() {
         streamNotes.build().onStart {
             _viewState.updateValue {
                 copy(loadState = Loading)
