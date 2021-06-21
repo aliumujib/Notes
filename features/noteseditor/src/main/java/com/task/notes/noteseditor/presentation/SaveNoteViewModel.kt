@@ -7,9 +7,9 @@ import com.task.noteapp.sharedlib.ext.updateValue
 import com.task.notes.noteseditor.domain.FetchNoteUseCase
 import com.task.notes.noteseditor.domain.SaveNoteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
 import java.lang.Exception
 import javax.inject.Inject
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

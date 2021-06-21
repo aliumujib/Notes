@@ -6,14 +6,28 @@ import androidx.fragment.app.Fragment
 import com.task.noteapp.sharedlib.ext.viewBinding
 import com.task.notes.noteslist.R
 import com.task.notes.noteslist.databinding.FragmentNotesListBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@AndroidEntryPoint
+@ExperimentalCoroutinesApi
 class NotesListFragment : Fragment(R.layout.fragment_notes_list) {
 
     private val binding: FragmentNotesListBinding by viewBinding(FragmentNotesListBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
+        listenForViewStateChanges()
+    }
+
+    private fun listenForViewStateChanges() {
 
     }
+
+    private fun initRecyclerView() {
+
+    }
+
 
 }

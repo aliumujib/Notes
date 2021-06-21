@@ -4,18 +4,14 @@ import com.google.common.truth.Truth.assertThat
 import com.task.notes.noteseditor.domain.FetchNoteUseCase
 import com.task.notes.noteseditor.domain.SaveNoteUseCase
 import com.task.notes.noteseditor.presentation.SaveNoteViewModel.Companion.Action
-import com.task.notes.noteseditor.presentation.SaveNoteViewModel.Companion.LoadState
 import com.task.notes.noteseditor.presentation.SaveNoteViewModel.Companion.LoadState.Success
-import com.task.notes.utils.NoParamsException
 import io.mockk.MockKAnnotations
-import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineScope
 import org.junit.Before
 import org.junit.Test
-import java.lang.Error
 
 @ExperimentalCoroutinesApi
 class SaveNoteViewModelTest {
@@ -79,7 +75,6 @@ class SaveNoteViewModelTest {
         assertThat(currentState.copy(imageURL = imageURL, loadState = Success)).isEqualTo(newState)
         assertThat(action).isEqualTo(Action.GoBack)
     }
-
 
     @Test
     fun deleteNote() {

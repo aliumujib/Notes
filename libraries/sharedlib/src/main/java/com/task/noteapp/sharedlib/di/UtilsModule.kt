@@ -14,5 +14,4 @@ object UtilsModule {
     fun providesCoroutineScope(): CoroutineScope? {
         return null
     }
-
 }
