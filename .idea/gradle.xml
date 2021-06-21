@@ -11,6 +11,15 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/noteseditor" />
+            <option value="$PROJECT_DIR$/features/noteslist" />
+            <option value="$PROJECT_DIR$/libraries" />
+            <option value="$PROJECT_DIR$/libraries/cache" />
+            <option value="$PROJECT_DIR$/libraries/coredomain" />
+            <option value="$PROJECT_DIR$/libraries/coremodels" />
+            <option value="$PROJECT_DIR$/libraries/data" />
+            <option value="$PROJECT_DIR$/libraries/sharedlib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
