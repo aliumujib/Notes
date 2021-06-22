@@ -35,7 +35,7 @@ class FetchNoteUseCaseTest {
     @Test
     fun test_fetchNotesReturnsCorrectData() = runBlockingTest {
         coEvery { notesRepository.fetchNote(note._id) } returns note
-        val actual: Note = sut(FetchNoteUseCase.Params.make(note._id))
+        val actual: Note? = sut(FetchNoteUseCase.Params.make(note._id))
         val expected = note
         coVerify {
             notesRepository.fetchNote(note._id)

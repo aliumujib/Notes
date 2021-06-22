@@ -2,6 +2,7 @@ package com.task.notes.noteseditor.presentation
 
 import androidx.lifecycle.SavedStateHandle
 import com.google.common.truth.Truth.assertThat
+import com.task.notes.noteseditor.domain.DeleteNoteUseCase
 import com.task.notes.noteseditor.domain.FetchNoteUseCase
 import com.task.notes.noteseditor.domain.SaveNoteUseCase
 import com.task.notes.noteseditor.presentation.SaveNoteViewModel.Companion.Action
@@ -26,6 +27,9 @@ class SaveNoteViewModelTest {
     private lateinit var saveNoteUseCase: SaveNoteUseCase
 
     @MockK
+    private lateinit var deleteNoteUseCase: DeleteNoteUseCase
+
+    @MockK
     private lateinit var savedStateHandle: SavedStateHandle
 
     private lateinit var saveNoteViewModel: SaveNoteViewModel
@@ -38,7 +42,7 @@ class SaveNoteViewModelTest {
         every { savedStateHandle.get<Int>(any()) } returns 0
         coEvery { fetchNoteUseCase(any()) } returns null
         saveNoteViewModel =
-            SaveNoteViewModel(testScope, savedStateHandle, fetchNoteUseCase, saveNoteUseCase)
+            SaveNoteViewModel(testScope, savedStateHandle, fetchNoteUseCase, saveNoteUseCase, deleteNoteUseCase)
     }
 
     @Test
@@ -60,7 +64,7 @@ class SaveNoteViewModelTest {
     }
 
     @Test
-    fun test_saveNoteCorrectlyCallsSaveNoteUsecaseAndAppendsRelevantParams() {
+    fun test_saveNoteCorrectlyCallsSaveNoteUseCaseWithRelevantParams() {
         val currentState = saveNoteViewModel.viewState.value
         val imageURL = "http://unsplash.com/image"
         val title = "title1"
@@ -83,6 +87,14 @@ class SaveNoteViewModelTest {
     }
 
     @Test
-    fun deleteNote() {
+    fun test_deleteNoteCorrectlyCallsUseCaseWithRelevantParams() {
+        val noteId = 2
+        saveNoteViewModel.setNoteId(noteId)
+        saveNoteViewModel.deleteNote()
+        coVerify {
+            deleteNoteUseCase(DeleteNoteUseCase.Params.make(noteId))
+        }
+        val action = saveNoteViewModel.actions.value
+        assertThat(action).isEqualTo(Action.GoBack)
     }
 }

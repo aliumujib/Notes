@@ -33,7 +33,7 @@ class SaveNoteUseCaseTest {
     fun test_saveNoteSavesCorrectData() = runBlockingTest {
         sut(SaveNoteUseCase.Params.make(note._id, note.title, note.note, note.imageURL))
         coVerify(exactly = 1) {
-            notesRepository.saveNote(note._id, note.title, note.note, note.imageURL)
+            notesRepository.saveNote(note._id, note.title, note.note, note.imageURL, any())
         }
     }
 
