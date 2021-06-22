@@ -17,5 +17,5 @@ The app leverages uni-directional data flow the in building a predictable state 
 
 ### How to build ###
 
-Run with Android Studio 4.2.1
-Run tests with ./gradlew testDebug
+- Run with Android Studio 4.2.1
+- Run tests with ``./gradlew testDebug`
