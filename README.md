@@ -1,41 +1,21 @@
 # NoteApp
 
-### Deadline
+### Architecture
+The app leverages uni-directional data flow the in building a predictable state machine for every screen. To achieve this, the ViewModel class of the Android Architecture Components and Kotlin Flow were used.
 
-We'll be waiting for your solution within 4 days.
+### Libraries ###
+Dagger Hilt - Dagger2 was used for dependency injection.
+Kotlin Flow - Flow was used for threading and data stream management.
+Room - Caching
+AndroidKtx - For cool extensions to Android classes.
+Architecture Components - For Lifecycle managment in the presentation layer, persistence.
+MockK - For mocking test dependencies.
+Truth - For Unit test assertions etc.
+Konveyor - For generating random data for tests.
+Espresso - For UI testing.
+Klint/Spotless - Lint checking and corrections
 
-### Goal ###
+### How to build ###
 
-Develop a simple note app that allows the user to save/edit/delete any kind of note and display them in a list.
-
-### Functional Requirements ###
-
-* Kotlin is preferred but not a must.
-* Users must be able to create notes with input fields such as title, description, image url (input can be optional) and store it locally on their phones.
-* Created note must contain a created date.
-* There must be a way to display all saved notes in the list. An item on the list must contain the created date (dd/mm/yyyy), the image if url is available, title and max. 2 lines of description.
-* There must be a way to edit/delete previously created notes. But edited notes must contain an (edited) tag somewhere while being displayed on the list.
-* All data should be persisted locally.
-
-### UI Suggestions ###
-
-It doesn't need to be super pretty, but it shouldn't be broken as well. The design is mostly up to you as long as creating, listing and editing/deleting features are available to use.
-
-Nice to have:
-* Animations/Transitions
-* At least one custom view
-
-### Expectations ###
-
-Consider this as a showcase of your skills.
-Approach it as if you are going to make a pull request on our main/master branch.
-
-We are expecting at least:
-* Clear, defined architecture.
-* Apply the Material Design Guidelines as much as possible.
-* Meaningful tests (You do not need to have 100% coverage, but we will be looking for tests).
-* Good and lint verified syntax.
-* The code can be hosted in any git repository. We expect a clear history in the repo. We don't mind your choice of git strategy as long as it has a track of your progress.
-* The repo must be private and should not contain any references to Getir in it.
-* The code must compile.
-* The code must be production ready. Unit tests are expected.
+Run with Android Studio 4.2.1
+Run tests with ./gradlew testDebug
