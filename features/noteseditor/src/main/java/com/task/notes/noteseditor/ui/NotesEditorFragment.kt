@@ -1,7 +1,10 @@
 package com.task.notes.noteseditor.ui
 
 import android.os.Bundle
+import android.transition.ChangeBounds
+import android.view.KeyEvent
 import android.view.View
+import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -36,12 +39,38 @@ class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
             }
         }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = ChangeBounds()
+        sharedElementReturnTransition = ChangeBounds()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initToolbar()
+        initViews()
         listenForStateChanges()
         listenForActions()
+        listenForBackPresses()
+    }
+
+    private fun listenForBackPresses() {
+        requireView().apply {
+            isFocusableInTouchMode = true
+            requestFocus()
+            setOnKeyListener { _, keyCode, _ ->
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    navigator.goBack()
+                    true
+                } else false
+            }
+        }
+    }
+
+    private fun initViews() {
+        val noteId = viewModel.viewState.value.noteId
+        ViewCompat.setTransitionName(binding.noteContentView, "shared_element$noteId")
     }
 
     private fun listenForActions() {
@@ -85,8 +114,8 @@ class NotesEditorFragment : Fragment(R.layout.fragment_notes_editor) {
         }
 
         viewState.imageURL?.let {
-            binding.noteImage.isVisible = true
             binding.noteImage.load(it)
+            binding.noteImage.isVisible = true
             binding.guideline.setGuidelinePercent(0.2f)
         }
     }

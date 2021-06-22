@@ -1,12 +1,15 @@
 package com.task.notes.noteseditor.presentation
 
+import androidx.lifecycle.SavedStateHandle
 import com.google.common.truth.Truth.assertThat
 import com.task.notes.noteseditor.domain.FetchNoteUseCase
 import com.task.notes.noteseditor.domain.SaveNoteUseCase
 import com.task.notes.noteseditor.presentation.SaveNoteViewModel.Companion.Action
 import com.task.notes.noteseditor.presentation.SaveNoteViewModel.Companion.LoadState.Success
 import io.mockk.MockKAnnotations
+import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineScope
@@ -22,6 +25,9 @@ class SaveNoteViewModelTest {
     @MockK
     private lateinit var saveNoteUseCase: SaveNoteUseCase
 
+    @MockK
+    private lateinit var savedStateHandle: SavedStateHandle
+
     private lateinit var saveNoteViewModel: SaveNoteViewModel
 
     private val testScope = TestCoroutineScope()
@@ -29,9 +35,10 @@ class SaveNoteViewModelTest {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxed = true)
-
+        every { savedStateHandle.get<Int>(any()) } returns 0
+        coEvery { fetchNoteUseCase(any()) } returns null
         saveNoteViewModel =
-            SaveNoteViewModel(testScope, fetchNoteUseCase, saveNoteUseCase)
+            SaveNoteViewModel(testScope, savedStateHandle, fetchNoteUseCase, saveNoteUseCase)
     }
 
     @Test
@@ -55,7 +62,6 @@ class SaveNoteViewModelTest {
     @Test
     fun test_saveNoteCorrectlyCallsSaveNoteUsecaseAndAppendsRelevantParams() {
         val currentState = saveNoteViewModel.viewState.value
-
         val imageURL = "http://unsplash.com/image"
         val title = "title1"
         val content = "desc1"

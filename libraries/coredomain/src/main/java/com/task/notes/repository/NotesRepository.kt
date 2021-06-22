@@ -16,5 +16,7 @@ interface NotesRepository {
         timeStamp: Long = DateTime().millis
     )
 
-    suspend fun fetchNote(id: Int): Note
+    suspend fun fetchNote(id: Int): Note?
+
+    fun deleteNote(id: Int)
 }

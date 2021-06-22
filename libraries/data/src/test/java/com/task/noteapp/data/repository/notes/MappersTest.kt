@@ -19,7 +19,8 @@ class MappersTest {
             "Title 1",
             "Content 1",
             "http://unsplash.com",
-            1624248633
+            1624248633,
+            false
         )
 
     private val note =
@@ -28,7 +29,8 @@ class MappersTest {
             "Title 1",
             "Content 1",
             "http://unsplash.com",
-            DateTime(1624248633)
+            DateTime(1624248633),
+            false
         )
 
     @Test

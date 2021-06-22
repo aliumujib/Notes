@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LoadingEmptyErrorStateView">
+        <attr name="error_icon" format="reference" />
+        <attr name="empty_icon" format="reference" />
+
+        <attr name="error_text" format="reference" />
+        <attr name="empty_text" format="reference" />
+    </declare-styleable>
+
+</resources>

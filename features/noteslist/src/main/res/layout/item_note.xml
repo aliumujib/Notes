@@ -70,6 +70,22 @@
             app:layout_constraintStart_toStartOf="@+id/note_content"
             app:layout_constraintTop_toBottomOf="@+id/note_content" />
 
+        <TextView
+            android:id="@+id/edited"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="@dimen/text_12"
+            android:text="@string/edited"
+            android:textColor="@color/color_secondary_text"
+            style="@style/Theme.Notes.LightText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/two_space"
+            android:layout_marginTop="@dimen/one_space"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintEnd_toEndOf="@+id/note_content"
+            app:layout_constraintTop_toBottomOf="@+id/note_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

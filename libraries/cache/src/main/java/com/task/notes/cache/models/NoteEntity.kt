@@ -10,5 +10,6 @@ data class NoteEntity(
     val title: String,
     val note: String,
     val imageURL: String?,
-    val editedAt: Long
+    val editedAt: Long?,
+    val edited: Boolean
 )

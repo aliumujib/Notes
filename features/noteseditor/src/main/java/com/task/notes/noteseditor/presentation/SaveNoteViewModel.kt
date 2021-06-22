@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.task.noteapp.models.Note
 import com.task.noteapp.sharedlib.ext.getViewModelScope
 import com.task.noteapp.sharedlib.ext.updateValue
+import com.task.notes.noteseditor.domain.DeleteNoteUseCase
 import com.task.notes.noteseditor.domain.FetchNoteUseCase
 import com.task.notes.noteseditor.domain.SaveNoteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +23,8 @@ class SaveNoteViewModel @Inject constructor(
     private val scope: CoroutineScope?,
     savedStateHandle: SavedStateHandle,
     private val fetchNote: FetchNoteUseCase,
-    private val saveNote: SaveNoteUseCase
+    private val saveNote: SaveNoteUseCase,
+    private val deleteNote: DeleteNoteUseCase
 ) : ViewModel() {
 
     private val _viewState = MutableStateFlow(ViewState.init())
@@ -43,7 +45,7 @@ class SaveNoteViewModel @Inject constructor(
             try {
                 val note = fetchNote(FetchNoteUseCase.Params.make(id))
                 _viewState.updateValue {
-                    copy(loadState = LoadState.Success, error = null, lastVersion = note, imageURL = note.imageURL)
+                    copy(loadState = LoadState.Success, error = null, lastVersion = note, imageURL = note?.imageURL)
                 }
             } catch (e: Exception) {
                 _viewState.updateValue {
@@ -71,15 +73,9 @@ class SaveNoteViewModel @Inject constructor(
                 attemptSave(title, note)
             } catch (e: Exception) {
                 _viewState.updateValue {
+                    e.printStackTrace()
                     copy(loadState = LoadState.Error, error = e)
                 }
-            }
-
-            _viewState.updateValue {
-                copy(loadState = LoadState.Success, error = null)
-            }
-            _actions.updateValue {
-                Action.GoBack
             }
         }
     }
@@ -99,9 +95,21 @@ class SaveNoteViewModel @Inject constructor(
                 viewState.value.imageURL
             )
         )
+        _viewState.updateValue {
+            copy(loadState = LoadState.Success, error = null)
+        }
+        _actions.updateValue {
+            Action.GoBack
+        }
     }
 
     fun deleteNote() {
+        getViewModelScope(scope).launch {
+            deleteNote.invoke(DeleteNoteUseCase.Params.make(viewState.value.noteId))
+            _actions.updateValue {
+                Action.GoBack
+            }
+        }
     }
 
     companion object {

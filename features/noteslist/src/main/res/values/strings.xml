@@ -3,4 +3,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_photo">Filter</string>
     <string name="search_your_notes">Search your notes</string>
+    <string name="edited">edited</string>
+    <string name="an_error_occured">An error occurred</string>
+    <string name="please_add_a_note">Please add a note</string>
 </resources>

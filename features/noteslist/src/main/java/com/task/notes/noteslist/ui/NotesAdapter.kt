@@ -2,6 +2,7 @@ package com.task.notes.noteslist.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
@@ -48,16 +49,18 @@ class NotesAdapter(private val itemClickListener: ItemClickListener<Note>?) :
 
         fun bind(data: Note) {
             with(data) {
+                ViewCompat.setTransitionName(binding.root, "item_image")
                 binding.noteImage.isVisible = !imageURL.isNullOrEmpty()
                 imageURL?.let {
                     binding.noteImage.load(it)
                 }
                 binding.noteTitle.text = title
                 binding.noteContent.text = note
+                binding.edited.isVisible = edited
                 binding.noteLastEdit.text = DateTimeFormat.forPattern("dd/MM/yyyy").print(lastEdit)
                 binding.root.children.forEach { child ->
                     child.setOnClickListener {
-                        clickListener?.onItemClick(data)
+                        clickListener?.onItemClick(data, binding.root)
                     }
                 }
             }

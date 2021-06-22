@@ -11,7 +11,8 @@ object DomainTestUtils {
             "Title 1",
             "Content 1",
             "http://unsplash.com",
-            DateTime(202903443)
+            DateTime(202903443),
+            false
         )
 
     private val note2 =
@@ -20,7 +21,8 @@ object DomainTestUtils {
             "Title 2",
             "Content 2",
             "http://unsplash.com",
-            DateTime(2345678989)
+            DateTime(2345678989),
+            true
         )
 
     private val note3 =
@@ -29,7 +31,8 @@ object DomainTestUtils {
             "Title 3",
             "Content 3",
             "http://unsplash.com",
-            DateTime(43576732445)
+            DateTime(43576732445),
+            false
         )
 
     val dummyList = listOf(note1, note2, note3)

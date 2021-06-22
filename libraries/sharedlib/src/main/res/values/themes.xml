@@ -8,6 +8,7 @@
         <item name="fontFamily">@font/maisonneue_book</item>
         <item name="android:textColor">@color/color_secondary_text</item>
         <item name="android:windowBackground">@color/color_window_bg</item>
+        <item name="android:windowActivityTransitions">true</item>
     </style>
 
     <style name="Theme.Notes.BoldText" parent="">

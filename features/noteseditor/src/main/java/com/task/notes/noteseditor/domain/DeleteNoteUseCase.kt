@@ -1,16 +1,15 @@
 package com.task.notes.noteseditor.domain
 
-import com.task.noteapp.models.Note
 import com.task.notes.repository.NotesRepository
 import com.task.notes.utils.NoParamsException
 import com.task.notes.utils.PostExecutionThread
 import com.task.notes.utils.SuspendUseCase
 import javax.inject.Inject
 
-class FetchNoteUseCase @Inject constructor(
+class DeleteNoteUseCase @Inject constructor(
     private val repository: NotesRepository,
     postExecutionThread: PostExecutionThread
-) : SuspendUseCase<FetchNoteUseCase.Params, Note>(postExecutionThread) {
+) : SuspendUseCase<DeleteNoteUseCase.Params, Unit>(postExecutionThread) {
 
     data class Params constructor(val id: Int) {
         companion object {
@@ -20,10 +19,10 @@ class FetchNoteUseCase @Inject constructor(
         }
     }
 
-    override suspend fun execute(params: Params?): Note? {
+    override suspend fun execute(params: Params?) {
         if (params == null) {
             throw NoParamsException()
         }
-        return repository.fetchNote(params.id)
+        return repository.deleteNote(params.id)
     }
 }

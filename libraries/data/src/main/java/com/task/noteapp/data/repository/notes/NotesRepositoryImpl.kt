@@ -26,10 +26,18 @@ class NotesRepositoryImpl @Inject constructor(private val notesDao: NotesDao) : 
         imageURL: String?,
         timeStamp: Long
     ) {
-        return notesDao.saveNote(NoteEntity(id, title, note, imageURL, timeStamp))
+        val currentVersion: NoteEntity? = notesDao.getNoteWithId(id)
+        notesDao.saveNote(NoteEntity(id, title, note, imageURL, timeStamp, currentVersion != null))
     }
 
-    override suspend fun fetchNote(id: Int): Note {
-        return noteEntityToNote(notesDao.getNoteWithId(id))
+    override suspend fun fetchNote(id: Int): Note? {
+        val entity = notesDao.getNoteWithId(id)
+        return entity?.let {
+            noteEntityToNote(it)
+        }
+    }
+
+    override fun deleteNote(id: Int) {
+        notesDao.deleteNoteWithId(id)
     }
 }

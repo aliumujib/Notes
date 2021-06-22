@@ -11,13 +11,14 @@ fun noteEntityToNote(noteEntity: NoteEntity): Note {
             title,
             note,
             imageURL,
-            DateTime(editedAt)
+            DateTime(editedAt),
+            edited
         )
     }
 }
 
 fun noteToNoteEntity(noteModel: Note): NoteEntity {
     return with(noteModel) {
-        NoteEntity(_id, title, note, imageURL, lastEdit.millis)
+        NoteEntity(_id, title, note, imageURL, lastEdit.millis, edited)
     }
 }

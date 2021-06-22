@@ -62,11 +62,15 @@
         android:id="@+id/add_button"
         app:srcCompat="@drawable/shape_square_plus" />
 
-    <TextView
+    <com.task.noteapp.sharedlib.views.LoadingEmptyErrorStateView
         style="@style/Theme.Notes.MediumText"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
+        app:error_icon="@drawable/alert_circle"
+        app:empty_text="@string/please_add_a_note"
+        app:error_text="@string/an_error_occured"
+        app:empty_icon="@drawable/shape_square_plus"
+        android:layout_width="match_parent"
         android:id="@+id/error_empty_view"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

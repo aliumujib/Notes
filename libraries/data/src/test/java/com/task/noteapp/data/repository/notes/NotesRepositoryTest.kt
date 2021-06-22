@@ -22,7 +22,7 @@ class NotesRepositoryTest {
     @MockK
     lateinit var notesDao: NotesDao
 
-    lateinit var repository: NotesRepositoryImpl
+    private lateinit var repository: NotesRepositoryImpl
 
     @Before
     fun setup() {
@@ -39,8 +39,20 @@ class NotesRepositoryTest {
     }
 
     @Test
-    fun test_saveNoteCorrectlyMapsDataAndCallsNotesDao() = runBlockingTest {
+    fun test_saveNoteCorrectlyMapsDataAndCallsNotesDaoWhenThereIsAnExistingNote() = runBlockingTest {
         val note = RepoTestUtils.dummyList[0]
+        coEvery { notesDao.getNoteWithId(note._id) } returns RepoTestUtils.dummyDaoList.first { note._id == it._id }
+        val noteEntity = noteToNoteEntity(note)
+        repository.saveNote(note._id, note.title, note.note, note.imageURL, note.lastEdit.millis)
+        coVerify(exactly = 1) {
+            notesDao.saveNote(noteEntity.copy(edited = true))
+        }
+    }
+
+    @Test
+    fun test_saveNoteCorrectlyMapsDataAndCallsNotesDaoWhenThereIsNoExistingNote() = runBlockingTest {
+        val note = RepoTestUtils.dummyList[0]
+        coEvery { notesDao.getNoteWithId(note._id) } returns null
         val noteEntity = noteToNoteEntity(note)
         repository.saveNote(note._id, note.title, note.note, note.imageURL, note.lastEdit.millis)
         coVerify(exactly = 1) {
@@ -55,5 +67,14 @@ class NotesRepositoryTest {
         val expected = noteEntityToNote(noteEntity)
         val actual = repository.fetchNote(noteEntity._id)
         assertThat(expected).isEqualTo(actual)
+    }
+
+    @Test
+    fun test_deleteNoteCorrectlyCallsNotesDao() = runBlockingTest {
+        val noteEntity = RepoTestUtils.dummyDaoList[0]
+        repository.deleteNote(noteEntity._id)
+        coVerify(exactly = 1) {
+            notesDao.deleteNoteWithId(noteEntity._id)
+        }
     }
 }

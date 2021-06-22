@@ -45,7 +45,7 @@ class NotesListFragment : Fragment(R.layout.fragment_notes_list), ItemClickListe
 
     private fun initViews() {
         binding.addButton.setOnClickListener {
-            navigator.goToNoteEditor(null)
+            navigator.goToNoteEditor(0, null)
         }
     }
 
@@ -96,7 +96,7 @@ class NotesListFragment : Fragment(R.layout.fragment_notes_list), ItemClickListe
         }
     }
 
-    override fun onItemClick(model: Note) {
-        navigator.goToNoteEditor(model._id)
+    override fun onItemClick(model: Note, itemView: View) {
+        navigator.goToNoteEditor(model._id, itemView)
     }
 }
